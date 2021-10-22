@@ -56,12 +56,17 @@ function SignOut() {
   return (
     auth.currentUser && (
       <div>
-        <Button variant='contained' onClick={() => auth.signOut()}>
+        <Button variant='outlined' onClick={() => auth.signOut()}>
           Sign out
         </Button>
       </div>
     )
   );
+}
+
+function MainView() {
+  const userName = auth.currentUser.displayName;
+  return <div>Hello {userName}!</div>;
 }
 
 function App() {
@@ -71,9 +76,9 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
-        <p>Hep</p>
+        <p>Welcome to Biary - Book diary</p>
         <SignOut />
-        <div>{user ? 'Päänäkymä' : <SignIn />}</div>
+        <div>{user ? <MainView /> : <SignIn />}</div>
       </header>
     </div>
   );
