@@ -1,22 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { Button } from '@mui/material';
-import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from './state';
-
-const firebaseConfig = {
-    apiKey: 'AIzaSyBjF71Gr6tj29AXytKgCXg5xhffXIQLH98',
-    authDomain: 'biary-2d90c.firebaseapp.com',
-    projectId: 'biary-2d90c',
-    storageBucket: 'biary-2d90c.appspot.com',
-    messagingSenderId: '760420116628',
-    appId: '1:760420116628:web:b3e160af0fb6f7cd362c81',
-    measurementId: 'G-HGX7E221DM',
-};
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from './firebase-config';
 
 const firebaseapp = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
