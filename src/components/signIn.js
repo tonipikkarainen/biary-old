@@ -4,6 +4,7 @@ import { actionCreators } from '../state';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { Button } from '@mui/material';
 import { firebaseapp } from '../firebase-config';
+import { createUser } from '../service/userApi';
 
 // Miksi täällä pitää importata firebaseapp??
 const provider = new GoogleAuthProvider();
@@ -21,8 +22,10 @@ function SignIn() {
                 const credential =
                     GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
-                // // muokataan omaa storea asettamalla käyttäjä
+                // muokataan omaa storea asettamalla käyttäjä
                 setUser(result.user.displayName);
+                // luodaan käyttäjä omaan tauluun - ainakin yritetään
+                createUser(result.user.uid, result.user.displayName);
                 // ...
             })
             .catch((error) => {
