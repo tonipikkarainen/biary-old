@@ -1,10 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
-import { getAuth } from 'firebase/auth';
 import { Button } from '@mui/material';
-
-const auth = getAuth();
+import { auth } from '../firebase-config';
 
 function SignOut() {
     const dispatch = useDispatch();

@@ -1,14 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { Button } from '@mui/material';
-import { firebaseapp } from '../firebase-config';
+import { auth, provider } from '../firebase-config';
 import { createUser } from '../service/userApi';
-
-// Miksi täällä pitää importata firebaseapp??
-const provider = new GoogleAuthProvider();
-const auth = getAuth();
+import { GoogleAuthProvider } from 'firebase/auth';
 
 function SignIn() {
     // Nämä muokkaa jotenkin fiksummaksi, sillä nyt kutsutaan kahdessa paikassa

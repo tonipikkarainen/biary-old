@@ -1,6 +1,4 @@
-import { getAuth } from 'firebase/auth';
-
-const auth = getAuth();
+import { auth } from '../firebase-config';
 
 function MainView() {
     const userName = auth.currentUser.displayName;

@@ -1,19 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useSelector } from 'react-redux';
-//import { firebaseapp } from './firebase-config';
 
 import SignIn from './components/signIn';
 import SignOut from './components/signOut';
 import MainView from './views/mainView';
-
-const auth = getAuth();
+import { auth } from './firebase-config';
 
 function App() {
     // Tätä storea ei välttämättä tarvita käyttäjälle, mutta ehkä muille
     // On tässä nyt malliksi siitä, miten reduxia voi käyttää
+    // tämä tyhjenee kun päivittää sivun?
+    // state asetetaan sign-innissä
     const userStore = useSelector((state) => state.user);
     const [user] = useAuthState(auth);
     // Testailua
