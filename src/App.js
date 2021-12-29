@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import SignIn from './components/signIn';
 import SignOut from './components/signOut';
+import NavBar from './components/navBar';
 import MainView from './views/mainView';
 import { auth } from './firebase-config';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -26,37 +27,7 @@ function App() {
             <div className='App'>
                 {/*                 <p>state user is {userStore}</p>
                  */}
-
-                <nav>
-                    <Breadcrumbs
-                        aria-label='breadcrumb'
-                        className='breadcrumbs'
-                    >
-                        <Link underline='hover' color='inherit' href='/'>
-                            Home
-                        </Link>
-                        {auth.currentUser == null && (
-                            <Link
-                                underline='hover'
-                                color='inherit'
-                                href='/signin'
-                            >
-                                Sign-in
-                            </Link>
-                        )}
-                        {auth.currentUser != null && (
-                            <Link
-                                underline='hover'
-                                color='inherit'
-                                href='/signout'
-                            >
-                                Sign-out
-                            </Link>
-                        )}
-                        <Typography color='text.primary'>Navigation</Typography>
-                    </Breadcrumbs>
-                </nav>
-
+                <NavBar />
                 <Routes>
                     <Route path='/signin' element={<SignIn />}></Route>
                     <Route path='/signout' element={<SignOut />}></Route>
