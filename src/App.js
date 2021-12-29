@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useSelector } from 'react-redux';
@@ -7,7 +6,11 @@ import SignIn from './components/signIn';
 import SignOut from './components/signOut';
 import MainView from './views/mainView';
 import { auth } from './firebase-config';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 function App() {
     // Tätä storea ei välttämättä tarvita käyttäjälle, mutta ehkä muille
     // On tässä nyt malliksi siitä, miten reduxia voi käyttää
@@ -19,17 +22,48 @@ function App() {
     console.log(auth.currentUser);
 
     return (
-        <div className='App'>
-            <header className='App-header'>
-                <img src={logo} className='App-logo' alt='logo' />
-                <p>state user is {userStore}</p>
-                <p>Welcome to Biary - Book diary </p>
-                {/* <Button onClick={() => setUser('Testi')}>set </Button>
-                <Button onClick={() => setUser('')}>unset </Button> */}
-                <SignOut />
-                <div>{user ? <MainView /> : <SignIn />}</div>
-            </header>
-        </div>
+        <Router>
+            <div className='App'>
+                {/*                 <p>state user is {userStore}</p>
+                 */}
+
+                <nav>
+                    <Breadcrumbs
+                        aria-label='breadcrumb'
+                        className='breadcrumbs'
+                    >
+                        <Link underline='hover' color='inherit' href='/'>
+                            Home
+                        </Link>
+                        {auth.currentUser == null && (
+                            <Link
+                                underline='hover'
+                                color='inherit'
+                                href='/signin'
+                            >
+                                Sign-in
+                            </Link>
+                        )}
+                        {auth.currentUser != null && (
+                            <Link
+                                underline='hover'
+                                color='inherit'
+                                href='/signout'
+                            >
+                                Sign-out
+                            </Link>
+                        )}
+                        <Typography color='text.primary'>Navigation</Typography>
+                    </Breadcrumbs>
+                </nav>
+
+                <Routes>
+                    <Route path='/signin' element={<SignIn />}></Route>
+                    <Route path='/signout' element={<SignOut />}></Route>
+                    <Route path='/' element={<MainView />}></Route>
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

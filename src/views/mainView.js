@@ -1,8 +1,12 @@
 import { auth } from '../firebase-config';
 
 function MainView() {
-    const userName = auth.currentUser.displayName;
-    return <div>Hello {userName}!</div>;
+    if (auth.currentUser != null) {
+        const userName = auth.currentUser.displayName;
+        return <div>Hello {userName}!</div>;
+    }
+
+    return <div>Hello!</div>;
 }
 
 export default MainView;

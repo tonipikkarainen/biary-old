@@ -40,6 +40,7 @@ function SignIn() {
 
     return (
         <div>
+            <h1>Please sign in with Google</h1>
             <Button variant='contained' onClick={signIn}>
                 Sign in
             </Button>
