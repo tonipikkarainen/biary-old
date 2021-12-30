@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { auth } from '../firebase-config';
+import React from 'react';
+import LogoSvg from '../images/biary-logo-web.svg';
 
 function NavBar() {
     return (
@@ -20,7 +22,12 @@ function NavBar() {
                 )}
             </div>
             <div className='navbarLogo'>
-                <div>Logo</div>
+                <img
+                    src={require('../images/biary-logo-web.svg').default}
+                    alt='mySvgImage'
+                    className='logoImg'
+                />
+                <div className='logoText'>iary.</div>
             </div>
         </nav>
     );
