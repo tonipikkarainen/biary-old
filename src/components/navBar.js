@@ -23,11 +23,11 @@ function NavBar() {
             </div>
             <div className='navbarLogo'>
                 <img
-                    src={require('../images/biary-logo-web.svg').default}
+                    src={require('../images/biary-v3-opt.svg').default}
                     alt='mySvgImage'
                     className='logoImg'
                 />
-                <div className='logoText'>iary.</div>
+                <div className='logoText'></div>
             </div>
         </nav>
     );
